@@ -1,0 +1,32 @@
+﻿@using PublicProfiler.Views.Components
+
+@{
+    ViewData["Title"] = "Home Page";
+
+
+    //    IList<BlogPost> blogs = new List<BlogPost>();
+
+    //    blogs.Add(new BlogPost { Name = "Blog A", Content = "Blog A Content", AuthorEmail = "blogger1@blogs.com" });
+
+}
+@if (User.Identity.IsAuthenticated)
+{
+
+
+
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome to Public Profiler</h1>
+        <h2 class="display-6">You will find the same "Create new Post" feature when you select 'BlogPosts' in the navigation bar </h2>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>
+
+
+    @(await Html.RenderComponentAsync<BlogEdit>(RenderMode.ServerPrerendered, new { baseUrl = "/BlogPosts" }))
+}
+else
+{ <div class="text-center">
+    <h1 class="display-4">Please Log in.</h1>
+  </div>
+
+}
